@@ -40,19 +40,24 @@ class _LoginPageState extends State<LoginPage> {
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Padding(
-            padding: EdgeInsets.only(
-              left: 20,
-              top: 90,
-              bottom: 30
-            ),
-            child: Text("Connexion :", style: TextStyle(
+          SizedBox(height: 40),
+          Icon(Icons.person_outlined, color:Colors.grey, size:14),
+          SizedBox(height:13)
+          Text(
+            "Bienvenue",
+            style: TextStyle(
+              fontSize: 30,
               fontWeight: FontWeight.bold,
-              fontSize: 25,
-              color: Colors.white 
-              ),
-            ),
-          ),
+            )
+          )
+          Text(
+            "Connectez-vous pour continuer",
+            style: TextStyle(
+              fontSize:18,
+              fontWeight: FontWeight.w500,
+              color: Colors.grey,
+            )
+          )
           FormHelper.inputFieldWidget(
             context, 
             "Email", 
@@ -67,8 +72,8 @@ class _LoginPageState extends State<LoginPage> {
               email = onSaved;
             },
             borderFocusColor: Colors.white,
-            borderColor: Colors.white,
-            textColor: Colors.white,
+            borderColor: Colors.red,
+            textColor: Colors.red,
             hintColor: Colors.white.withOpacity(0.8),
             borderRadius: 10
             ),
@@ -88,9 +93,9 @@ class _LoginPageState extends State<LoginPage> {
                   password = onSaved;
                 },
                 borderFocusColor: Colors.white,
-                borderColor: Colors.white,
-                textColor: Colors.white,
-                hintColor: Colors.white.withOpacity(0.8),
+                borderColor: Colors.red,
+                textColor: Colors.red,
+                hintColor: Colors.red.withOpacity(0.8),
                 borderRadius: 10,
                 ),
                 

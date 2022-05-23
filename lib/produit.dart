@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 class produit{
-  static String baseUrl = "https://jsonplaceholder.typicode.com";
+  static String baseUrl = "http://localhost:3001/";
   static Future<List> getAllProduit() async{
     try{
-      var res = await http.get(Uri.parse(baseUrl+'/posts'));
+      var res = await http.get(Uri.parse(baseUrl+'/produits'));
       if(res.statusCode == 200){
         return jsonDecode(res.body);
       }
@@ -23,9 +23,16 @@ class produit{
      try{
       var connection = {"email": login, "password": password};
       var res = await http.post(
-        Uri.parse("https://reqres.in/api/login"),
+        Uri.parse("http://localhost:3001/users/login"),
+        encoding: Utf8Codec(),
+        headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+        'Accept': "*/*",
+        'connection': 'keep-alive',
+        'Accept-Encoding' : 'gzip, deflate, br',
+        },
         body: connection
-        );
+      );
       if(res.statusCode == 200){
         Navigator.pushNamed(context, '/liste');
       }

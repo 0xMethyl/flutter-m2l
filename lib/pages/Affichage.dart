@@ -16,7 +16,7 @@ class _AffichageState extends State<Affichage> {
   late Future<List> _bookList;
   @override 
   void initState() {
-    // TODO: implement initState
+
     super.initState();
     _bookList = produit.getAllProduit();
   }
