@@ -3,12 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 class produit{
-  static String baseUrl = "http://10.0.2.2:4000/";
+  static String baseUrl = "http://10.0.2.2:4000";
   static Future<List> getAllProduit() async{
     try{
       var res = await http.get(Uri.parse(baseUrl+'/produits'));
+      print("POURQUOI METTRE 3 TERMINAUX LES UNS SUR LES AUTRES ON VOIT RIEN");
       if(res.statusCode == 200){
-        return jsonDecode(res.body);
+        return jsonDecode(res.body)["success"];
       }
       else{
         return Future.error("erreur serveur");
@@ -22,13 +23,10 @@ class produit{
   static Login(BuildContext context, login, password) async{
      try{
       var connection = {"email": login, "password": password};
-      print('coucou');
       var res = await http.post(
-        Uri.parse("http://localhost:4000/users/login"),
+        Uri.parse("http://10.0.2.2:4000/users/login"),
         body: connection
       );
-      print(res);
-
       if(res.statusCode == 200){
         Navigator.pushNamed(context, '/liste');
       }

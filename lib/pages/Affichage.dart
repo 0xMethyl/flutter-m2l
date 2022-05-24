@@ -19,6 +19,7 @@ class _AffichageState extends State<Affichage> {
 
     super.initState();
     _bookList = produit.getAllProduit();
+
   }
   @override
   Widget build(BuildContext context) {
@@ -29,6 +30,7 @@ class _AffichageState extends State<Affichage> {
          _bookList = _bookList.then<List>((value) {return [newProduit, ...value];});
       });
     }
+    
      return Scaffold(
       appBar: AppBar(
         title: const Text("liste produits"),
@@ -38,16 +40,19 @@ class _AffichageState extends State<Affichage> {
           future: _bookList,
           builder: (context, snapshot){
             if(snapshot.hasData){
+              print("bouh");
+
+              print(snapshot.data![0]['produit_nom']);
               return ListView.builder(
                 itemCount: snapshot.data?.length,
                 itemBuilder: (context, i){
                   return Card(
                     child: ListTile(
-                      title: Text(snapshot.data![i]['title'], style: const TextStyle(fontSize: 30),),
+                      title: Text(snapshot.data![i]['produit_nom'], style: const TextStyle(fontSize: 30),),
                       subtitle: Column(
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: [
-                          Text(snapshot.data![i]['body'], style: const TextStyle(fontSize: 20)),
+                          Text(snapshot.data![i]['produit_marque'], style: const TextStyle(fontSize: 20)),
                       ]),
                     ),
                   );
