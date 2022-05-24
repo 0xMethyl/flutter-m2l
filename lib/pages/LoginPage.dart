@@ -20,7 +20,7 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor : Colors.blue,
+        backgroundColor : Colors.white,
         body: ProgressHUD(
           child: Form(
             key: globalFormKey,
@@ -37,27 +37,27 @@ class _LoginPageState extends State<LoginPage> {
   Widget _loginUI(BuildContext context){
     return SingleChildScrollView(
       child:  Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           SizedBox(height: 40),
-          Icon(Icons.person_outlined, color:Colors.grey, size:14),
-          SizedBox(height:13)
+          Icon(Icons.person_outlined, color:Colors.grey, size:50),
+          SizedBox(height:13),
           Text(
             "Bienvenue",
             style: TextStyle(
               fontSize: 30,
               fontWeight: FontWeight.bold,
-            )
-          )
+            ),
+          ),
           Text(
             "Connectez-vous pour continuer",
             style: TextStyle(
               fontSize:18,
               fontWeight: FontWeight.w500,
               color: Colors.grey,
-            )
-          )
+            ),
+          ),
           FormHelper.inputFieldWidget(
             context, 
             "Email", 
