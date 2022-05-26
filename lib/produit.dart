@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 class produit{
-  static String baseUrl = "http://10.0.2.2:4000/";
+  static String baseUrl = "http://172.26.143.66:4000";
   static Future<List> getAllProduit() async{
     try{
       var res = await http.get(Uri.parse(baseUrl+'/produits'));
@@ -22,15 +22,15 @@ class produit{
   static Login(BuildContext context, login, password) async{
      try{
       var connection = {"email": login, "password": password};
-      print('coucou');
+
       var res = await http.post(
-        Uri.parse("http://localhost:4000/users/login"),
+        Uri.parse("http://172.26.143.66:4000/users/login"),
         body: connection
       );
-      print(res);
+      print(connection);
 
       if(res.statusCode == 200){
-        Navigator.pushNamed(context, '/liste');
+        Navigator.pushNamed(context, '/home');
       }
       else{
         Navigator.pushNamed(context, '/');
@@ -46,12 +46,10 @@ class produit{
       Map<String,dynamic> data= {"title":title,"body":body};
       var res = await http.post(
         Uri.parse(baseUrl+'/posts'), 
-        body: data
+          body: data
         );
       if(res.statusCode == 201){
-        Navigator.pushNamed(context, '/liste', arguments: res.body
-
-        );
+        Navigator.pushNamed(context, '/home', arguments: res.body);
       }
       else{
         Navigator.pushNamed(context, '/');
