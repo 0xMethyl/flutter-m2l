@@ -3,22 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 class produit{
-<<<<<<< HEAD
-  static String baseUrl = "http://172.30.208.223:4000";
-=======
-  static String baseUrl = "http://10.0.2.2:4000";
->>>>>>> cefec3b07c7b528b67f088d52eab581055c51bfc
+  static String baseUrl = "http://172.20.158.73:4000";
   static Future<List> getAllProduit() async{
     try{
       var res = await http.get(Uri.parse(baseUrl+'/produits'));
       print("POURQUOI METTRE 3 TERMINAUX LES UNS SUR LES AUTRES ON VOIT RIEN");
       if(res.statusCode == 200){
-<<<<<<< HEAD
-        print(res.body);
-        return jsonDecode(res.body);
-=======
         return jsonDecode(res.body)["success"];
->>>>>>> cefec3b07c7b528b67f088d52eab581055c51bfc
       }
       else{
         return Future.error("erreur serveur");
@@ -32,19 +23,10 @@ class produit{
   static Login(BuildContext context, login, password) async{
      try{
       var connection = {"email": login, "password": password};
-<<<<<<< HEAD
-
       var res = await http.post(
         Uri.parse("http://172.20.158.73:4000/users/login"),
         body: connection
       );
-
-=======
-      var res = await http.post(
-        Uri.parse("http://10.0.2.2:4000/users/login"),
-        body: connection
-      );
->>>>>>> cefec3b07c7b528b67f088d52eab581055c51bfc
       if(res.statusCode == 200){
         Navigator.pushNamed(context, '/home');
       }
