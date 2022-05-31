@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutterapp/pages/Affichage.dart';
-import 'package:flutterapp/pages/Ajout.dart';
 import 'package:flutterapp/pages/LoginPage.dart';
 import 'package:flutterapp/produit.dart';
 
@@ -16,12 +15,11 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'connection flutter et nodeJS via express',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.red,
       ),
       routes: {
         '/' : (context) => LoginPage(),
-        '/home': (context) => Affichage(),
-        '/ajout': (context) => Ajout()
+        '/home': (context) => Affichage()
       },
     );
   }

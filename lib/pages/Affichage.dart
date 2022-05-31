@@ -31,7 +31,7 @@ class _AffichageState extends State<Affichage> {
     }
      return Scaffold(
       appBar: AppBar(
-        title: const Text("liste produits"),
+        title: const Text("North Sport"),
       ),
       body: Container(
         child: FutureBuilder<List>(
@@ -62,12 +62,6 @@ class _AffichageState extends State<Affichage> {
           },
         ),
         ),
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            Navigator.pushNamed(context, '/ajout');
-          },
-          child: const Text("+"),
-      ),  
     );
   }
 }
