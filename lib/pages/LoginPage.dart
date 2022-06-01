@@ -40,17 +40,17 @@ class _LoginPageState extends State<LoginPage> {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          SizedBox(height: 40),
-          Icon(Icons.person_outlined, color:Colors.grey, size:50),
-          SizedBox(height:13),
-          Text(
+          const SizedBox(height: 40),
+          const Icon(Icons.person_outlined, color:Colors.grey, size:50),
+          const SizedBox(height:13),
+          const Text(
             "Bienvenue",
             style: TextStyle(
               fontSize: 30,
               fontWeight: FontWeight.bold,
             ),
           ),
-          Text(
+          const Text(
             "Connectez-vous pour continuer",
             style: TextStyle(
               fontSize:18,

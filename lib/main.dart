@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutterapp/pages/Affichage.dart';
 import 'package:flutterapp/pages/LoginPage.dart';
 import 'package:flutterapp/produit.dart';
+import 'package:flutterapp/pages/Admin.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,14 +14,17 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'connection flutter et nodeJS via express',
       theme: ThemeData(
         primarySwatch: Colors.red,
       ),
       routes: {
         '/' : (context) => LoginPage(),
-        '/home': (context) => Affichage()
+        '/home': (context) => Affichage(),
+        '/admin' :(context) => Admin(),
       },
     );
   }
 }
+

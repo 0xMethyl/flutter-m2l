@@ -1,74 +1,80 @@
+// ignore_for_file: camel_case_types, non_constant_identifier_names
+
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+
 class produit{
-static String baseUrl = "http://172.20.158.73:4000";
-static Future<List> getAllProduit() async{
-  try{
-    var res = await http.get(Uri.parse(baseUrl+'/produits'));
-    print("POURQUOI METTRE 3 TERMINAUX LES UNS SUR LES AUTRES ON VOIT RIEN");
-    if(res.statusCode == 200){
-      return jsonDecode(res.body)["success"];
+  static String baseUrl = "http://192.168.1.26:4000";
+  static Future<List> getAllProduit() async{
+    try{
+      var res = await http.get(Uri.parse(baseUrl+'/produits'));
+      if(res.statusCode == 200){
+        return jsonDecode(res.body)["success"];
+      }
+      else{
+        return Future.error("erreur serveur");
+      }
     }
-    else{
-      return Future.error("erreur serveur");
-    }
-  }
-  catch(err){
-    return Future.error(err);
-  }
-}
-static Login(BuildContext context, login, password) async{
-   try{
-    var connection = {"email": login, "password": password};
-    var res = await http.post(
-      Uri.parse("http://172.20.158.73:4000/users/login"),
-      body: connection
-    );
-    if(res.statusCode == 200){
-      Navigator.pushNamed(context, '/home');
-    }
-    else{
-      Navigator.pushNamed(context, '/');
+    catch(err){
+      return Future.error(err);
     }
   }
-  catch(err){
-    return Future.error(err);
-  }
- }
- static Loggedin(BuildContext context, login, password) async{
-   try{
-    var res = await http.get(
-      Uri.parse("http://172.20.158.73:4000/users/login"),
-    );
-    if(res.statusCode == 200){
-      Navigator.pushNamed(context, '/home');
-    }
-    else{
-      Navigator.pushNamed(context, '/');
-    }
-  }
-  catch(err){
-    return Future.error(err);
-  }
- }
-static ajout(BuildContext context, title, body) async{
-  try{
-   
-    Map<String,dynamic> data= {"title":title,"body":body};
-    var res = await http.post(
-      Uri.parse(baseUrl+'/posts'), 
-        body: data
+
+  static Login(BuildContext context, login, password) async{
+     try{
+      var connection = {"email": login, "password": password};
+      var res = await http.post(
+        Uri.parse("http://192.168.1.26:4000/users/login"),
+        body: connection
       );
-    if(res.statusCode == 201){
-      Navigator.pushNamed(context, '/home', arguments: res.body);
+      if(res.statusCode == 200){
+        Navigator.pushNamed(context, '/home');
+      }
+      else{
+        Navigator.pushNamed(context, '/');
+      }
     }
-    else{
-      Navigator.pushNamed(context, '/');
+    catch(err){
+      return Future.error(err);
+    }
+   }
+
+   static Loggedin(BuildContext context, login, password) async{
+     try{
+      var res = await http.get(
+        Uri.parse("http://192.168.1.26:4000/users/login"),
+      );
+
+      if(res.statusCode == 200){
+        Navigator.pushNamed(context, '/home');
+      }
+      else{
+        Navigator.pushNamed(context, '/');
+      }
+    }
+    catch(err){
+      return Future.error(err);
+    }
+   }
+  static ajout(BuildContext context, title, body) async{
+    try{
+     
+      Map<String,dynamic> data= {"title":title,"body":body};
+      var res = await http.post(
+        Uri.parse(baseUrl+'/posts'), 
+          body: data
+        );
+      if(res.statusCode == 201){
+        Navigator.pushNamed(context, '/home', arguments: res.body);
+      }
+      else{
+        Navigator.pushNamed(context, '/');
+      }
+    }
+    catch(err){
+      return Future.error(err);
     }
   }
-  catch(err){
-    return Future.error(err);
-  }
 }
-}
+

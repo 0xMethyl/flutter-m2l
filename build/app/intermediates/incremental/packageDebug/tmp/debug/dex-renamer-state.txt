@@ -1,4 +1,4 @@
-#Tue May 31 22:20:34 CEST 2022
+#Wed Jun 01 14:32:59 CEST 2022
 base.0=F\:\\Documents\\IPSSI\\BTS2\\BTS\\m2l\\flutter-m2l-main\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
 renamed.0=classes.dex
 path.0=classes.dex
